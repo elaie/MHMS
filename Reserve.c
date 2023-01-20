@@ -17,9 +17,9 @@ void Check_R(int a,int i)
 	char s1[6]="Empty",s2[9]="Reserved";
 		gotoxyR(x,y);
 		if(a==0)
-			printf("Snacks Table %d : %d\n",i+1,s1);
+			printf("Snacks Table %d : %s\n",i+1,s1);
 		else
-			printf("Snacks Table %d : %d\n",i+1,s2);
+			printf("Snacks Table %d : %s\n",i+1,s2);
 		y++;
 }
 
@@ -28,9 +28,9 @@ void Check_D(int a,int i)
 	char s1[6]="Empty",s2[9]="Reserved";
 		gotoxyR(x,y);
 		if(a==0)
-			printf("Dinner Table %d : %d\n",i+1,s1);
+			printf("Dinner Table %d : %s\n",i+1,s1);
 		else
-			printf("Dinner Table %d : %d\n",i+1,s2);
+			printf("Dinner Table %d : %s\n",i+1,s2);
 		y++;
 }
 

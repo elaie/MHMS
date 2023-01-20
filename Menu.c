@@ -2,7 +2,7 @@
 #include<conio.h>
 #include<string.h>
 #include<windows.h>
-
+#include<time.h>
 void Menu_PutData();
 void Menu_GetData();
 void M_Put_Price();
@@ -48,12 +48,8 @@ void writeLinkedList(struct Node* head){
     struct Node* temp = head;
     
     FILE* file;
-    file = fopen ("ABC.txt", "w");
-    if (file == NULL)
-    {
-        fprintf(stderr, "\nCouldn't Open File'\n");
-        exit (1);
-    }
+    file = fopen ("Menu.txt", "w");
+    
     
     // writing all the nodes of the linked list to the file
     while(temp!=NULL)
@@ -64,7 +60,7 @@ void writeLinkedList(struct Node* head){
     
     if(fwrite != 0)
     {
-        printf("Linked List stored in the file successfully\n");
+        printf("Item Successfully Added!\n");
     }
        else
     {
@@ -77,6 +73,8 @@ void writeLinkedList(struct Node* head){
 int checkStock(struct Node* head,int bill_no){
 	int ch,k=0,amt;
    scanf("%d",&ch);
+   if(ch==80)
+   	return;
    if(head==NULL) {
       printf("Linked List not initialized");
       return 0;
@@ -152,7 +150,7 @@ int printList(struct Node* head,int bill_no) {
 	{
 		printf("%c",205);
 	}
-	bill_no=checkStock(readLinkedList("ABC.txt"),bill_no);	
+	bill_no=checkStock(readLinkedList("Menu.txt"),bill_no);	
 	return bill_no;
 }
 
@@ -166,11 +164,7 @@ struct Node* readLinkedList(char filename[]){
     
     FILE* file;
     file = fopen (filename, "r");
-    if (file == NULL)
-    {
-        fprintf(stderr, "\nCouldn't Open File'\n");
-        exit (1);
-    }
+    
     
     // reading nodes from the file
     // nodes are read in the same order as they were stored
@@ -268,7 +262,9 @@ int viewMenu(){
 	int bill_no=0;
 	float total=0;
 	do{
-		bill_no=printList(readLinkedList("ABC.txt"),bill_no); 
+		bill_no=printList(readLinkedList("Menu.txt"),bill_no); 
+		if(bill_no==60)
+			return;
 		printf("Do you want more orders? (Y/N): ");
 		ch=getch();
 	}while(ch!='n');
@@ -278,12 +274,12 @@ int viewMenu(){
     
 
   // current date/time based on current system
-   //time_t now = time(0);
+   time_t now = time(0);
    
    // convert now to string form
-   //char* dt = ctime(&now);
+   char* dt = ctime(&now);
 //printf( "%s\n",dt);
-	//fprintf(file1, "%s\n",dt);
+	fprintf(file1, "%s\n",dt);
 
    printf("Your Total Bill is: \n");
    
@@ -324,12 +320,12 @@ int viewMenu(){
     //insert(8);
     //printList();
     writeLinkedList(head);
-    printList(readLinkedList("ABC.txt"));
+    printList(readLinkedList("Menu.txt"));
     printf("Enter food=");
     scanf("%s",&f);
     update_data(f);
     writeLinkedList(head);
-    printList(readLinkedList("ABC.txt"));   
+    printList(readLinkedList("Menu.txt"));   
     return 0;
 }
 */
@@ -361,4 +357,5 @@ void DISP()
 
     //5
     fclose(filePointer);
+    getch();
 }
