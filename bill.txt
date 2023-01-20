@@ -11,3 +11,12 @@ Item: Black_Tea	Quantity: 1	Total: 15.000000
 Item: Pizza	Quantity: 3	Total: 1800.000000
 Grand Total: 2016.000000
 
+Fri Jan 20 14:23:03 2023
+
+Grand Total: 0.000000
+
+Fri Jan 20 14:24:25 2023
+
+Item: Black_Tea	Quantity: 2	Total: 30.000000
+Grand Total: 30.000000
+

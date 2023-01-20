@@ -137,7 +137,9 @@ int printList(struct Node* head,int bill_no) {
 		gotoxyT(x2,y1);
 		printf("%c",186);
     	gotoxyT(x1,y1);
-		printf("%d) %s:    %d \n",j, temp->Food,temp->price);		
+		printf("%d) %s:     ",j, temp->Food);
+		gotoxyT(70,y1);	
+		printf("%d",temp->price);
         temp = temp->next;
         y1++;
         i++;
@@ -180,7 +182,9 @@ void displayStocks(struct Node* head)
 		gotoxyT(x2,y1);
 		printf("%c",186);
     	gotoxyT(x1,y1);
-		printf("%d) %s:    %d \n",j, temp->Food,temp->Stock);		
+			printf("%d) %s:     ",j, temp->Food);
+		gotoxyT(70,y1);	
+		printf("%d",temp->Stock);
         temp = temp->next;
         y1++;
         i++;
@@ -258,6 +262,7 @@ void update_data(char food[]) {
 }
 
 void deleteNode(char food[]) {
+
     int newval;
 
    if(head==NULL) {
@@ -338,6 +343,138 @@ int viewMenu(){
     // close file
     fclose(file1);
 
+}
+
+void update_price() {
+	char food[80];
+	system("cls");
+	HANDLE color=GetStdHandle(STD_OUTPUT_HANDLE);
+	int i=0,j=1,Color=1,x1=45,y1=4,x2=99,y2=4;
+    struct Node* temp = head;
+    gotoxyT(0,1);
+	for(i=0;i<100;i++)
+	{
+		printf("%c",205);
+	}
+	gotoxyT(0,2);
+	printf("%c",186);
+	gotoxyT(45,2);
+	gotoxyT(x2,2);
+	printf("%c",186);
+	gotoxyT(0,3);
+	for(i=0;i<100;i++)
+		printf("%c",205);
+    while(temp != NULL) {
+    	SetConsoleTextAttribute(color, Color);    	
+		gotoxyT(0,y1);
+		printf("%c",186);
+		gotoxyT(x2,y1);
+		printf("%c",186);
+    	gotoxyT(x1,y1);
+		printf("%d) %s:     ",j, temp->Food,temp->price);
+		gotoxyT(70,y1);
+		printf("%d",temp->price);		
+        temp = temp->next;
+        y1++;
+        i++;
+        j++;
+        if(i%10==0)
+			Color++;
+    }
+    gotoxyT(0,y1);
+    for(i=0;i<100;i++)
+	{
+		printf("%c",205);
+	}
+	printf("Enter food item to modify the price: ");
+	scanf("%s",food);
+	int newval;
+   	
+   if(head==NULL) {
+      printf("Linked List not initialized");
+      return;
+   } 
+
+   struct Node* current = head;
+   while(current->next!=NULL) {
+      if(strcmp(current->Food,food)==0 ){
+         printf("Initial Amount=%d change to =",current->price);
+         scanf("%d",&newval);
+         current->price=newval;
+         writeLinkedList(current);
+         return;
+      }
+      
+      current = current->next;
+   }
+   
+   printf(" does not exist in the list\n");
+}
+
+void update_stocks(){
+	char food[80];
+	system("cls");
+	HANDLE color=GetStdHandle(STD_OUTPUT_HANDLE);
+	int i=0,j=1,Color=1,x1=45,y1=4,x2=99,y2=4;
+    struct Node* temp = head;
+    gotoxyT(0,1);
+	for(i=0;i<100;i++)
+	{
+		printf("%c",205);
+	}
+	gotoxyT(0,2);
+	printf("%c",186);
+	gotoxyT(45,2);
+	gotoxyT(x2,2);
+	printf("%c",186);
+	gotoxyT(0,3);
+	for(i=0;i<100;i++)
+		printf("%c",205);
+    while(temp != NULL) {
+    	SetConsoleTextAttribute(color, Color);    	
+		gotoxyT(0,y1);
+		printf("%c",186);
+		gotoxyT(x2,y1);
+		printf("%c",186);
+    	gotoxyT(x1,y1);
+		printf("%d) %s:     ",j, temp->Food,temp->Stock);
+		gotoxyT(70,y1);
+		printf("%d",temp->price);		
+        temp = temp->next;
+        y1++;
+        i++;
+        j++;
+        if(i%10==0)
+			Color++;
+    }
+    gotoxyT(0,y1);
+    for(i=0;i<100;i++)
+	{
+		printf("%c",205);
+	}
+	printf("Enter food item to modify the Stocks: ");
+	scanf("%s",food);
+	int newval;
+   	
+   if(head==NULL) {
+      printf("Linked List not initialized");
+      return;
+   } 
+
+   struct Node* current = head;
+   while(current->next!=NULL) {
+      if(strcmp(current->Food,food)==0 ){
+         printf("Initial Amount=%d change to =",current->Stock);
+         scanf("%d",&newval);
+         current->price=newval;
+         writeLinkedList(current);
+         return;
+      }
+      
+      current = current->next;
+   }
+   
+   printf(" does not exist in the list\n");
 }
 /*int main() {
 	char tempfood[100],f[100];

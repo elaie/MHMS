@@ -36,42 +36,13 @@ void Check_D(int a,int i)
 
 void Check_P(int a,int i)
 {
-	HANDLE color=GetStdHandle(STD_OUTPUT_HANDLE);
 	char s1[6]="Empty",s2[9]="Reserved";
+		gotoxyR(x,y);
 		if(a==0)
-			{
-				SetConsoleTextAttribute(color, 4);
- 			}
+			printf("Parking LOT %d : %s\n",i+1,s1);
 		else
-			{
-				SetConsoleTextAttribute(color, 2);
- 			}
- 		if(Count==0)
-				{
-					gotoxyR(x+4,y+4);
-					printf("%c%c%c%c%c%c%c%c",178,178,178,178,178,178,178,178);
- 					gotoxyR(x+2,y+5);
- 					printf("%c%c%c%c%c%c%c%c%c%c%c",178,178,178,178,178,178,178,178,178,178,178);
-		 			gotoxyR(x+3,y+6);
- 					printf("%c",162);
- 					gotoxyR(x+10,y+6);
- 					printf("%c",162);
- 					Count=1;
- 				}
-				else
-				{
-					
-					gotoxyR(x+4,y+4);
- 					printf("%c%c%c%c%c%c%c%c",178,178,178,178,178,178,178,178);
- 					gotoxyR(x+22,y+5);
- 					printf("%c%c%c%c%c%c%c%c%c%c%c",178,178,178,178,178,178,178,178,178,178,178);
-		 			gotoxyR(x+23,y+6);
- 					printf("%c",162);
- 					gotoxyR(x+30,y+6);
- 					printf("%c",162);
- 					Count=0;
- 					y+=4;
-				}
+			printf("Parking LOT %d : %s\n",i+1,s2);
+		y++;
 }
 
 void Dinner_T()
