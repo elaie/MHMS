@@ -15,7 +15,7 @@ void main()
 	for(i=0;i<3;i++)
 	{
 		//Admin_Register_Pass();
-		//f=Admin_Verification();
+		f=Admin_Verification();
 		if(f==0)
 		{
 			Sleep(900);
@@ -90,7 +90,8 @@ void main()
 		switch(S)
 		{
 			case 1:
-			//	Menu_GetData();
+				displayStocks("Menu.txt");
+				getch();
 				break;
 			case 2:
 			//	Menu_PutData();

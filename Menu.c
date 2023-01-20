@@ -74,7 +74,7 @@ int checkStock(struct Node* head,int bill_no){
 	int ch,k=0,amt;
    scanf("%d",&ch);
    if(ch==80)
-   	return;
+   	return 0;
    if(head==NULL) {
       printf("Linked List not initialized");
       return 0;
@@ -154,7 +154,46 @@ int printList(struct Node* head,int bill_no) {
 	return bill_no;
 }
 
-
+void displayStocks(struct Node* head)
+{
+	system("cls");
+	HANDLE color=GetStdHandle(STD_OUTPUT_HANDLE);
+	int i=0,j=1,Color=1,x1=45,y1=4,x2=99,y2=4;
+    struct Node* temp = head;
+    gotoxyT(0,1);
+	for(i=0;i<100;i++)
+	{
+		printf("%c",205);
+	}
+	gotoxyT(0,2);
+	printf("%c",186);
+	gotoxyT(45,2);
+	gotoxyT(x2,2);
+	printf("%c",186);
+	gotoxyT(0,3);
+	for(i=0;i<100;i++)
+		printf("%c",205);
+    while(temp != NULL) {
+    	SetConsoleTextAttribute(color, Color);    	
+		gotoxyT(0,y1);
+		printf("%c",186);
+		gotoxyT(x2,y1);
+		printf("%c",186);
+    	gotoxyT(x1,y1);
+		printf("%d) %s:    %d \n",j, temp->Food,temp->Stock);		
+        temp = temp->next;
+        y1++;
+        i++;
+        j++;
+        if(i%10==0)
+			Color++;
+    }
+    gotoxyT(0,y1);
+    for(i=0;i<100;i++)
+	{
+		printf("%c",205);
+	}
+}
 struct Node* readLinkedList(char filename[]){
     
     struct Node* temp = (struct Node *)malloc(sizeof(struct Node));;
@@ -264,7 +303,7 @@ int viewMenu(){
 	do{
 		bill_no=printList(readLinkedList("Menu.txt"),bill_no); 
 		if(bill_no==60)
-			return;
+			return 0;
 		printf("Do you want more orders? (Y/N): ");
 		ch=getch();
 	}while(ch!='n');

@@ -61,7 +61,7 @@ void Check_P(int a,int i)
 				else
 				{
 					
-					gotoxyR(x+24,y+4);
+					gotoxyR(x+4,y+4);
  					printf("%c%c%c%c%c%c%c%c",178,178,178,178,178,178,178,178);
  					gotoxyR(x+22,y+5);
  					printf("%c%c%c%c%c%c%c%c%c%c%c",178,178,178,178,178,178,178,178,178,178,178);
